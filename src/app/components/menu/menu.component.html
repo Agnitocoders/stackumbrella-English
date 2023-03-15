@@ -1,0 +1,178 @@
+<ion-menu type="overlay" [ngClass]="{'dark' : dataService.theme === 'dark'}" swipeGesture="false" swipeEnabled="false" contentId="main-content" autoHide=false>
+  <ion-header>
+    <ion-toolbar class="themeBtn">
+      <ion-img class="logo" *ngIf="dataService.theme === 'light' " src="../../../assets/Logo-name.png"></ion-img>
+      <ion-img class="logo" *ngIf="dataService.theme === 'dark' "src="../../../assets/Logo-name-white.png"></ion-img>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list class="list">
+
+
+      <div class="mainMenus">
+
+        <div class="listItem" (click)="goToPage('tabs')">
+          <ion-icon name="home"></ion-icon>
+          <ion-text>Home</ion-text>
+        </div>
+
+        <div class="listItem" (click)="changeLanguage()">
+          <img class="langIcon" src="../../../assets/icon/language.png" />
+          <ion-text>Change language &middot; <span class="lang"> {{dataService.language | titlecase}}</span></ion-text>
+        </div>
+
+        <div class="listItem" (click)="goToPage('tabs/tab1/save-posts')">
+          <ion-icon name="bookmark"></ion-icon>
+          <ion-text>Saved Post</ion-text>
+        </div>
+
+        <div class="listItem" (click)="goToPage('tabs/tab1/profile')">
+          <ion-icon name="person"></ion-icon>
+          <ion-text>Profile</ion-text>
+        </div>
+
+        <div class="listItem" (click)="goToPage('tabs/tab1/settings')">
+          <ion-icon name="settings"></ion-icon>
+          <ion-text>Settings</ion-text>
+        </div>
+
+        <!-- <div class="listItem" (click)="changeTheme()"> -->
+          <ion-item class="listItem themeItem" (click)="changeTheme()">
+            <ion-icon *ngIf="dataService.theme === 'light' " name="sunny"></ion-icon>
+            <ion-icon *ngIf="dataService.theme === 'dark' " name="moon"></ion-icon>
+            <ion-text>{{dataService.theme | titlecase}} Mode</ion-text>
+            <ion-toggle  mode="md" slot="end" ></ion-toggle>
+          </ion-item>
+          
+          <!-- <ion-icon *ngIf="dataService.theme === 'light' " name="sunny"></ion-icon>
+          <ion-icon *ngIf="dataService.theme === 'dark' " name="moon"></ion-icon>
+          <ion-text>Mode</ion-text> -->
+        <!-- </div> -->
+
+
+        <div>
+
+          <ion-accordion-group>
+            <ion-accordion value="first">
+
+              <ion-item class="listItem catHeader" slot="header" >
+                <ion-icon name="settings"></ion-icon>
+                <ion-text>Categories</ion-text>
+              </ion-item>
+
+              <!-- <div class="ion-padding" slot="content"> -->
+              <div class="catList" slot="content" [ngClass]="{'collapsed': collapsed === false}">
+                <div class="listItem" *ngFor="let item of dataService.topNav; index as i;"
+                  (click)="goTocCatPage(item.id)">
+                  <ion-text>{{item.name}}</ion-text>
+                </div>
+              </div>
+              <!-- </div> -->
+            </ion-accordion>
+
+          </ion-accordion-group>
+
+
+
+
+          <!-- <div class="moreBtn" [ngClass]="{'hide': collapsed === true}" (click)="doCollaps()">
+            <ion-text>Show less</ion-text>
+          </div>
+          <div class="moreBtn" [ngClass]="{'hide': collapsed === false}" (click)="doCollaps()">
+            <ion-text>see more</ion-text>
+          </div> -->
+        </div>
+
+      </div>
+
+      <!-- <div class="listItem" (click)="goToPage('tabs/tab1/save-posts')">
+        <ion-icon name="bookmark"></ion-icon>
+        <ion-text>Saved Post</ion-text>
+      </div> -->
+
+      <!-- <div class="listItem" (click)="goToPage('tabs/tab1/profile')">
+        <ion-icon name="person"></ion-icon>
+        <ion-text>Profile</ion-text>
+      </div> -->
+
+      <!-- <div class="listItem" (click)="goToPage('tabs/tab1/settings')">
+        <ion-icon name="settings"></ion-icon>
+        <ion-text>Settings</ion-text>
+      </div> -->
+
+      <!-- <div class="listItem langGrp">
+        <div class="langBtn" (click)="changeLanguage('hindi')">
+          <ion-text>Hindi</ion-text>
+        </div>
+
+        <div class="langBtn" (click)="changeLanguage('english')">
+          <ion-text>English</ion-text>
+        </div>
+      </div> -->
+
+
+
+
+
+
+
+
+
+
+
+      <div>
+        <div class="listItem" (click)="goToPage('logout')">
+          <ion-icon name="power"></ion-icon>
+          <ion-text>Logout</ion-text>
+        </div>
+
+        <div class="orgDiv">
+          <div class="org" (click)="goToExPage('https://www.stackumbrella.com/about-us/')">
+
+            <ion-text>About</ion-text>
+          </div>
+
+          <div class="org" (click)="goToExPage('https://www.stackumbrella.com/contact-us/')">
+
+            <ion-text>Contact</ion-text>
+          </div>
+
+          <div class="org" (click)="goToExPage('https://www.stackumbrella.com/terms-and-conditions/')">
+
+            <ion-text>T&C</ion-text>
+          </div>
+
+          <div class="org" (click)="goToExPage('https://www.stackumbrella.com/privacy-policy/')">
+
+            <ion-text>Policies</ion-text>
+          </div>
+        </div>
+
+        <div class="orgDiv">
+          <div class="social">
+            <a class="org" href="https://instagram.com/thestackumbrella?igshid=YmMyMTA2M2Y=">
+
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+  
+            <a class="org" href="https://www.facebook.com/thestackumbrella/">
+  
+              <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+  
+            <a class="org" href="https://www.linkedin.com/in/stackumbrella/">
+  
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+  
+            <a class="org" href="https://twitter.com/Stackumbrella">
+  
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-menu>

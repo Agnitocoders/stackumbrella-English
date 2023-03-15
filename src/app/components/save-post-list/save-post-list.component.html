@@ -1,0 +1,58 @@
+<div style="overflow: scroll;">
+
+
+  <div class="noDataDive" *ngIf='dataService.isLoading'>
+    <div>
+      <ion-spinner name="crescent"></ion-spinner><ion-text>Please wait...</ion-text>
+    </div>
+  </div>
+
+  <div class="noDataDive"  *ngIf='zeroSave || dataService.savedPost.length ===0'>
+    <div>
+      <!-- <ion-spinner name="crescent"></ion-spinner> -->
+      <ion-text>You dont have any saved video.</ion-text>
+    </div>
+  </div>
+  
+  <ion-list *ngIf="dataService.savedPost">
+    <div *ngFor="let item of dataService.savedPost; index as i;">
+      <div (click)="gotoDetailsPage(item)">
+        <div class="itemDiv">
+          <div>
+            <img *ngIf="item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              [src]="item['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['medium']['source_url']" />
+
+            <img *ngIf="!item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              src="./../../../assets/Logo-name.png" />
+          </div>
+          <div class="cardDetailsDiv">
+            <div class="text ellipsis" [ngClass]="{'hindiText' : dataService.language === 'hindi'}">
+              <ion-text class="text-concat">{{removeTag(item.title.rendered)}}</ion-text>
+            </div>
+            <div class="btnRow">
+              <div>
+                <div>
+                  <ion-icon name="heart-outline"></ion-icon>
+                </div>
+              </div>
+              <div class='shareBtns'>
+                <div class="share-btn" (click)="dataService.removeLocalPost($event,item)">
+                  <ion-icon name="bookmark"></ion-icon>
+                </div>
+                <div class="share-btn" (click)="share($event, item.link)">
+                  <ion-icon name="share-social-sharp"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll> -->
+  </ion-list>
+
+
+</div>

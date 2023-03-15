@@ -1,0 +1,42 @@
+<ion-content>
+  <div class="mainDiv">
+    <ion-text *ngIf="dataService.selectedPost.title" class="heading" [innerHTML]="dataService.selectedPost.title.rendered"></ion-text>
+    <div class="imgDetails">
+      <div>
+        <ion-text class="subHeading">{{dataService.selectedPost.date | date: 'MMMM dd, yyyy'}}</ion-text>
+      </div>
+      <div class="views">
+        <img src="../../../assets/icon/flame.png">
+        <ion-text class="subHeading">6</ion-text>
+      </div>
+    </div>
+    <div *ngIf="dataService.selectedPost['_embedded']['wp:featuredmedia'][0]['media_details']">
+      <img id='banner' 
+      [src]="dataService.selectedPost['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url']" />
+    </div>
+    
+    <div class="btn-row">
+      <div>
+        <ion-icon name="heart-outline"></ion-icon>
+      </div>
+      <div *ngIf="!dataService.selectedPost.saved" class="share-btn" (click)="dataService.savePostLocal($event,dataService.selectedPost)">
+        <ion-icon name="bookmark-outline"></ion-icon>
+      </div>
+      <div *ngIf="dataService.selectedPost.saved" class="share-btn" (click)="dataService.removeLocalPost($event,dataService.selectedPost)">
+        <ion-icon name="bookmark"></ion-icon>
+      </div>
+    </div>
+  </div>
+  <div class="mainDiv withInner postDtl" *ngIf="dataService.selectedPost">
+
+    <div class="innerDiv" [innerHTML]="dataService.selectedPost.content.rendered"> </div>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  <app-relative-post (parentFun)="ionViewWillEnter()" ></app-relative-post>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger" (click)="share(dataService.selectedPost.link)">
+      <ion-icon name="share-social-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

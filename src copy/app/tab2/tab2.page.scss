@@ -1,0 +1,21 @@
+.webPage {
+    margin-top: 115px;
+    height: 78vh;
+    width: 100vw;
+    border: 0px;
+}
+
+#backButton {
+    z-index: 99999;
+    position: absolute;
+    bottom: 0px;
+
+    ion-button {
+        --border-radius: 48px;
+        --padding-top: 0;
+        --padding-start: 3px;
+        --padding-end: 3px;
+        --padding-bottom: 0;
+        height: 30px;
+    }
+}

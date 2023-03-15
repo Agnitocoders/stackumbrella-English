@@ -1,0 +1,10 @@
+{
+  "name": "Stackumbrella",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular"
+}

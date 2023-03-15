@@ -1,0 +1,47 @@
+.tab-selected {
+    color: var(--ion-color-umbrella);
+}
+
+ion-label {
+    font-weight: 700;
+}
+
+.rotate {
+    transform: rotate(90deg);
+}
+
+.dark{
+    background-color: #000;
+    
+    ion-text{
+        color: white;
+    }
+    ion-icon{
+        color: white !important;
+    }
+    ion-menu-button{
+        color: white;
+    }
+    ion-list{
+        background-color: white;
+        color: white;
+        ion-text{
+            background-color: white;
+        color: white;
+        }
+    }
+    ion-label{
+        color: white;
+    }
+    ion-tab-bar{
+        background-color: #000;
+        background: #000;
+    }
+    ion-tab-button{
+        // background-color: #000;
+        background: #000;    
+    }
+    .tab-selected {
+        color: var(--ion-color-umbrella);
+    }
+}

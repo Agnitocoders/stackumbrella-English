@@ -1,0 +1,54 @@
+<div style="overflow: scroll;">
+
+
+  <div *ngIf='dataService.postData.length === 0 '>
+    <app-skeleton></app-skeleton>
+  </div>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list *ngIf="dataService.postData.length>0">
+    <div *ngFor="let item of dataService.postData; index as i;">
+      <div (click)="gotoDetailsPage(item)">
+        <div class="itemDiv">
+          <div>
+            <img *ngIf="item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              [src]="item['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['medium']['source_url']" />
+
+            <img id="defaultImg" *ngIf="!item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              src="./../../../assets/Logo-name.png" />
+          </div>
+          <div class="cardDetailsDiv">
+            <div class="text ellipsis" [ngClass]="{'hindiText' : dataService.language === 'hindi'}">
+              <ion-text class="text-concat">{{removeTag(item.title.rendered)}}</ion-text>
+            </div>
+            <div class="btnRow">
+              <div>
+                <div>
+                  <ion-icon name="heart-outline"></ion-icon>
+                </div>
+              </div>
+              <div class='shareBtns'>
+                <div *ngIf="!item.saved" class="share-btn" (click)="dataService.savePostLocal($event,item)">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+                <div *ngIf="item.saved" class="share-btn" (click)="dataService.removeLocalPost($event,item)">
+                  <ion-icon name="bookmark"></ion-icon>
+                </div>
+                <div class="share-btn" (click)="share($event, item.link)">
+                  <ion-icon name="share-social-sharp"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content>
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-list>
+
+
+</div>
