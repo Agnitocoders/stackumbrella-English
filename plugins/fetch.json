@@ -39,20 +39,42 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-inappbrowser": {
+  "cordova-plugin-fcm-with-dependecy-updated": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-inappbrowser@^5.0.0"
+      "id": "cordova-plugin-fcm-with-dependecy-updated"
+    },
+    "is_top_level": true,
+    "variables": {
+      "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
+      "ANDROID_FCM_VERSION": "21.0.0",
+      "ANDROID_FIREBASE_BOM_VERSION": "26.0.0",
+      "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.4",
+      "ANDROID_GRADLE_TOOLS_VERSION": "4.1.0"
+    }
+  },
+  "cordova-admob": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-admob"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-x-socialsharing": {
+  "cordova-connectivity-monitor": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-x-socialsharing"
+      "id": "cordova-connectivity-monitor"
     },
-    "is_top_level": true,
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-play-services-version-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-play-services-version-adapter"
+    },
+    "is_top_level": false,
     "variables": {}
   },
   "es6-promise-plugin": {
@@ -63,34 +85,10 @@
     "is_top_level": false,
     "variables": {}
   },
-  "cordova-plugin-androidx-adapter": {
+  "cordova-plugin-x-socialsharing": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-androidx-adapter"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-androidx": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-androidx"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-fcm-with-dependecy-updated": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-fcm-with-dependecy-updated"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-admob": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-admob"
+      "id": "cordova-plugin-x-socialsharing"
     },
     "is_top_level": true,
     "variables": {}

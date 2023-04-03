@@ -1,10 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="stackumbrella.agnitomedia.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="stackumbrella.agnitomedia.com" version="1.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="connectivity">
+        <param name="android-package" value="com.appfeel.cordova.connectivity.Connectivity" />
+    </feature>
+    <feature name="AdMobAds">
+        <param name="android-package" value="com.appfeel.cordova.admob.AdMobAds" />
+    </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    <feature name="FCMPlugin">
+        <param name="android-package" value="com.gae.scaffolder.plugin.FCMPlugin" />
+        <param name="onload" value="true" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
@@ -14,6 +21,12 @@
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SocialSharing">
+        <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
+    </feature>
+    <platform name="android">
+        <preference name="AndroidXEnabled" value="true" />
+    </platform>
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
     </feature>
@@ -23,9 +36,9 @@
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
     </feature>
-    <name>Stack Umbrella</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <name>Stackumbrella</name>
+    <description>Stackumbrella</description>
+    <author email="https://agnitotechnologies.com/" href="https://agnitotechnologies.com/">Stackumbrella</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -66,5 +79,6 @@
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
+    <preference name="android-targetSdkVersion" value="31" />
     <preference name="Scheme" value="http" />
 </widget>

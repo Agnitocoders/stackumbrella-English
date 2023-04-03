@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdMobService } from 'src/app/services/adMob/ad-mob.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -14,11 +15,14 @@ export class CategoryPage implements OnInit {
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    public adService: AdMobService
   ) {
+    
   }
 
   ngOnInit() {
+    this.adService.addInitalAdd();
     // const id = this.activeRoute.snapshot.queryParamMap.get('id')
     // console.log(id);
     // console.log(id);

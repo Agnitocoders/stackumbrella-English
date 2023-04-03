@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AdMobService } from '../services/adMob/ad-mob.service';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { DataService } from '../services/data.service';
 export class Tab1Page {
 
   constructor(
-    public dataService: DataService
+    public dataService: DataService,
+    public adService: AdMobService
   ) { }
 }

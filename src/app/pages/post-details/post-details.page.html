@@ -33,7 +33,6 @@
   <div class="mainDiv withInner postDtl" *ngIf="dataService.selectedPost">
 
     <div class="innerDiv" [innerHTML]="dataService.selectedPost.content.rendered"> </div>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 
   <app-relative-post (parentFun)="ionViewWillEnter()"></app-relative-post>

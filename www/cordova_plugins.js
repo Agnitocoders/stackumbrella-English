@@ -1,6 +1,23 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "cordova-connectivity-monitor.connectivity",
+      "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
+      "pluginId": "cordova-connectivity-monitor",
+      "clobbers": [
+        "window.connectivity"
+      ]
+    },
+    {
+      "id": "cordova-admob.AdMobAds",
+      "file": "plugins/cordova-admob/www/admob.js",
+      "pluginId": "cordova-admob",
+      "clobbers": [
+        "window.admob",
+        "window.tappx"
+      ]
+    },
+    {
       "id": "cordova-plugin-device.device",
       "file": "plugins/cordova-plugin-device/www/device.js",
       "pluginId": "cordova-plugin-device",
@@ -14,14 +31,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
       "clobbers": [
         "FCM"
-      ]
-    },
-    {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
-      "clobbers": [
-        "cordova.InAppBrowser.open"
       ]
     },
     {
@@ -72,10 +81,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "cordova-plugin-androidx-adapter": "1.1.3",
+    "cordova-connectivity-monitor": "1.2.2",
+    "cordova-play-services-version-adapter": "1.0.2",
+    "cordova-admob": "5.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-fcm-with-dependecy-updated": "7.8.0",
-    "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "5.0.2",

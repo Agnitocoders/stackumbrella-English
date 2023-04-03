@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from './services/data.service';
 import { Platform } from '@ionic/angular';
 import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic';
+// import { FCM } from 'cordova-plugin-fcm-with-dependecy-updated/ionic/ngx';
 import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent {
   constructor(
     public dataService: DataService,
     public router: Router,
+    // private FCM: FCM,
     public plt: Platform) {
     this.plt.ready()
       .then(() => {

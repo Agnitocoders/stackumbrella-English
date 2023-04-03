@@ -28,11 +28,19 @@
         "parents": {
           "/*": [
             {
+              "xml": "<feature name=\"connectivity\"><param name=\"android-package\" value=\"com.appfeel.cordova.connectivity.Connectivity\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"AdMobAds\"><param name=\"android-package\" value=\"com.appfeel.cordova.admob.AdMobAds\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+              "xml": "<feature name=\"FCMPlugin\"><param name=\"android-package\" value=\"com.gae.scaffolder.plugin.FCMPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
             {
@@ -42,6 +50,56 @@
             {
               "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+              "count": 2
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+              "count": 2
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 1
+            }
+          ],
+          "/manifest/application": [
+            {
+              "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" android:theme=\"@android:style/Theme.Translucent\" />",
+              "count": 1
+            },
+            {
+              "xml": "<activity android:launchMode=\"singleTop\" android:name=\"com.gae.scaffolder.plugin.FCMPluginActivity\"><intent-filter><action android:name=\"FCM_PLUGIN_ACTIVITY\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter></activity>",
+              "count": 1
+            },
+            {
+              "xml": "<service android:name=\"com.gae.scaffolder.plugin.MyFirebaseMessagingService\" android:stopWithTask=\"false\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_icon\" android:resource=\"@mipmap/ic_launcher\" />",
+              "count": 1
+            },
+            {
+              "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
+              "count": 1
+            }
+          ],
+          "/*/application": [
+            {
+              "xml": "<receiver android:enabled=\"true\" android:exported=\"true\" android:name=\"nl.xservices.plugins.ShareChooserPendingIntent\"><intent-filter><action android:name=\"android.intent.action.SEND\" /></intent-filter></receiver>",
+              "count": 1
             }
           ]
         }
@@ -49,6 +107,10 @@
       "config.xml": {
         "parents": {
           "/*": [
+            {
+              "xml": "<platform name=\"android\"><preference name=\"AndroidXEnabled\" value=\"true\" /></platform>",
+              "count": 1
+            },
             {
               "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
               "count": 1
@@ -79,10 +141,24 @@
     }
   },
   "installed_plugins": {
+    "cordova-connectivity-monitor": {
+      "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
+    },
+    "cordova-play-services-version-adapter": {
+      "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
+    },
+    "cordova-admob": {
+      "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
     },
-    "cordova-plugin-inappbrowser": {
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "ANDROID_DEFAULT_NOTIFICATION_ICON": "@mipmap/ic_launcher",
+      "ANDROID_FCM_VERSION": "21.0.0",
+      "ANDROID_FIREBASE_BOM_VERSION": "26.0.0",
+      "ANDROID_GOOGLE_SERVICES_VERSION": "4.3.4",
+      "ANDROID_GRADLE_TOOLS_VERSION": "4.1.0",
       "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
     },
     "cordova-plugin-ionic-keyboard": {
@@ -96,10 +172,33 @@
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "stackumbrella.agnitomedia.com"
     }
   },
   "dependent_plugins": {},
   "modules": [
+    {
+      "id": "cordova-connectivity-monitor.connectivity",
+      "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
+      "pluginId": "cordova-connectivity-monitor",
+      "clobbers": [
+        "window.connectivity"
+      ]
+    },
+    {
+      "id": "cordova-admob.AdMobAds",
+      "file": "plugins/cordova-admob/www/admob.js",
+      "pluginId": "cordova-admob",
+      "clobbers": [
+        "window.admob",
+        "window.tappx"
+      ]
+    },
     {
       "id": "cordova-plugin-device.device",
       "file": "plugins/cordova-plugin-device/www/device.js",
@@ -109,11 +208,11 @@
       ]
     },
     {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
+      "id": "cordova-plugin-fcm-with-dependecy-updated.FCMPlugin",
+      "file": "plugins/cordova-plugin-fcm-with-dependecy-updated/www/FCMPlugin.js",
+      "pluginId": "cordova-plugin-fcm-with-dependecy-updated",
       "clobbers": [
-        "cordova.InAppBrowser.open"
+        "FCM"
       ]
     },
     {
@@ -147,14 +246,33 @@
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-x-socialsharing.SocialSharing",
+      "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+      "pluginId": "cordova-plugin-x-socialsharing",
+      "clobbers": [
+        "window.plugins.socialsharing"
+      ]
     }
   ],
   "plugin_metadata": {
+    "cordova-connectivity-monitor": "1.2.2",
+    "cordova-play-services-version-adapter": "1.0.2",
+    "cordova-admob": "5.1.0",
     "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-inappbrowser": "5.0.0",
+    "cordova-plugin-fcm-with-dependecy-updated": "7.8.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-statusbar": "2.4.2"
+    "cordova-plugin-statusbar": "2.4.2",
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-x-socialsharing": "6.0.4"
   }
 }

@@ -3,9 +3,9 @@ import { Component, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { App } from 'src/AppConstant';
-import { InViewportMetadata } from 'ng-in-viewport';
+import { InViewportMetadata } from 'ng-in-viewport'; 
 
 @Component({
   selector: 'app-video-list',

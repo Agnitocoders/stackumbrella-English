@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 import { Router } from '@angular/router';
 
 @Component({
