@@ -24,6 +24,11 @@ export class VideoListComponent implements OnInit {
 
   @ViewChildren('player')
   videoPlayer!: QueryList<any>;
+  slideOpts = {
+    initialSlide: 0,
+    direction: 'vertical',
+    pagination: false
+  };
   constructor(
     public dataService: DataService,
     private http: HttpClient,
@@ -37,19 +42,7 @@ export class VideoListComponent implements OnInit {
   didScroll(event:any){
     console.log(event)
   }
-  onIntersection(event: any) {
-    // console.log(event)
-    const { [InViewportMetadata]: { entry }, target } = event;
-    const ratio = entry.intersectionRatio;
-    const vid = target;
-    // console.log(vid)
-    ratio >= 0.65 ? this.loadandPlay(vid) : vid.pause();
-  }
-
-  loadandPlay(vid:any){
-    vid.load();
-    vid.play()
-  }
+ 
 
   unloadand(vid:any){
     vid.unload()
@@ -134,5 +127,31 @@ export class VideoListComponent implements OnInit {
   }
 
 
+  onIntersection(event: any) {
+    // console.log(event)   
+    const { [InViewportMetadata]: { entry }, target } = event;
+    const ratio = entry.intersectionRatio;
+    const vid = target;
+    ratio >= 0.65 ? this.loadandPlay(vid) : vid.load();;
+  }
+
+  loadandPlay(vid: any) {
+    vid.play()
+  }
+
+  ionSlideDrag() {
+    console.log('slide end')
+    this.dataService.ionSlideTouchEnd()
+  }
+
+  
+
+  
+
+ 
+
+  slideChanged(event: any){
+    console.log('slide changed', event)
+  }
 
 }

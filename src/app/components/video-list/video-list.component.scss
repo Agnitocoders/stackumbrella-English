@@ -1,70 +1,40 @@
-ion-avatar {
-    --border-radius: 4px;
+.itmDiv {
+    // position: relative;
+    height: 100%;
 }
 
-ion-list {
-    // margin-top: 94px;
-    padding-top: 0px;
-    overflow: auto !important;
-    scroll-snap-type: y mandatory !important;
+.imgDiv::after {
+    content: '';
+    position: absolute;
+    background: black;
 }
 
-ion-list,
-.itemDiv {
-    max-width: 100% !important;
-    height: 100vh !important;
-}
-
-.itemDiv {
-    height: 100vh !important;
-    width: 100vw !important;
-    scroll-snap-align: start;
+.imgDiv {
+    object-fit: cover !important;
 }
 
 img {
-    border-radius: 5px;
-    height: 85px;
-    width: 130px;
-    // object-fit: cover !important;
-
+    max-height: 100%;
+    height: 36vh;
+    width: 100vw;
+    object-fit: cover !important;
 }
 
-.post {
-    text-overflow: ellipsis;
-    line-height: 5px;
-}
-
-ion-text {
-    position: relative;
-    font-size: 15px;
-    color: black;
-    width: 250px;
+p {
+    position: absolute;
+    bottom: 0;
+    font-size: 18px;
     font-weight: 600;
-    /* Could be anything you like. */
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%;
 }
 
-.text-concat {
-    position: relative;
-    display: inline;
-    overflow: hidden;
-    max-height: 49.6px;
-    line-height: 16px;
-}
+ion-slides {
+    --bullet-background-active: red;
 
-
-
-.text.ellipsis {
-    height: 48px;
-    overflow: hidden;
-}
-
-.cardDetailsDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 0px;
-    width: 80%;
 }
 
 .btnRow {
@@ -73,13 +43,34 @@ ion-text {
     margin-top: 0px;
     font-size: 20px;
     bottom: 64px;
-    right: 15px;
     z-index: 9999;
-    flex-direction: column;
     position: absolute;
     height: 140px;
+    /* align-items: center; */
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+}
+
+.subsBtn {
+    height: 22px;
+    width: 71px;
+    border: 1px solid white;
+    border-radius: 4px;
+    text-align: center !important;
+    display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
+    background-color: #ec353a;
+
+    ion-text {
+        display: block;
+        color: #fff;
+        font-size: 10px
+    }
 }
 
 .share-btn {
@@ -179,6 +170,7 @@ ion-text {
     flex-direction: column;
     border-bottom: 1px solid #D3D3D3;
     position: relative;
+    height: 100%;
 
     img {
         object-fit: cover !important;
@@ -205,35 +197,7 @@ ion-content::webkit-scrollbar {
     display: none !important;
 }
 
-ion-refresher {
-    margin-top: 110px;
+.video {
+    height: 100%;
+    width: 100%;
 }
-
-.hindiText {
-    height: 44px !important;
-}
-
-.infiniteScroll {
-    height: 10px !important;
-}
-
-
-.infinite-loading infinite-loading-spinner {
-    display: none !important;
-}
-
-.infinite-loading {
-    display: none !important;
-}
-
-// :host ::ng-deep ion-infinite-scroll {
-//     height: 200px;
-//     z-index: 999;
-//     position: absolute;
-//     bottom: 80px;
-
-// }
-
-// :host ::ng-deep ion-infinite-scroll ion-spinner {
-//     display: none
-// }

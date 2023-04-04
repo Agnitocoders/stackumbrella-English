@@ -1,55 +1,36 @@
-<div style="overflow: scroll; scroll-behavior: smooth;">
+<ion-slides  direction="vertical" pager="true" *ngIf="dataService.featurePost"
+[options]="slideOpts">
+<ion-slide  *ngFor="let item of dataService.videos; index as i;">
+  <div class="itemDiv" (click)="changeVideoAudio($event, item.reels_id)">
+    <div class="mid">
+      <div *ngIf="showAmimation === true">
+        <ion-icon class="like likeEffect" name="heart"></ion-icon>
+      </div>
 
+      <div *ngIf="volumeAnimation === true && !mute">
+        <ion-icon class="volume likeEffect" name="volume-high-outline"></ion-icon>
+      </div>
 
-  <div class="noDataDive" *ngIf='dataService.isLoading'>
-    <div>
-      <ion-spinner name="crescent"></ion-spinner><ion-text>Please wait...</ion-text>
-    </div>
-  </div>
-  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  <ion-list *ngIf="dataService.postData">
-
-    <div *ngFor="let item of dataService.videos; index as i;">
-      <div class="itemDiv" (click)="changeVideoAudio($event, item.reels_id)">
-        <div class="mid">
-          <div *ngIf="showAmimation === true">
-            <ion-icon class="like likeEffect" name="heart"></ion-icon>
-          </div>
-
-          <div *ngIf="volumeAnimation === true && !mute">
-            <ion-icon class="volume likeEffect" name="volume-high-outline"></ion-icon>
-          </div>
-
-          <div *ngIf="volumeAnimation === true && mute">
-            <ion-icon class="novolume likeEffect" name="volume-mute-outline"></ion-icon>
-          </div>
-        </div>
-        <div class="btnRow">
-          <div class="share-btn" (click)="doLike($event)">
-            <ion-icon name="heart-outline"></ion-icon>
-            <ion-text>129k</ion-text>
-          </div>
-          <div class="share-btn">
-            <ion-icon name="eye-outline"></ion-icon>
-            <ion-text>12k</ion-text>
-          </div>
-          <div class="share-btn" (click)="share($event, item.link)">
-            <ion-icon name="share-social-sharp"></ion-icon>
-            <ion-text></ion-text>
-          </div>
-        </div>
-        <div class="overlay"></div>
-        <video width="100%" height="100%" inViewport [inViewportOptions]="{ threshold: [0, 0.65] }"
-          (inViewportAction)="onIntersection($event)" playsinline loop [muted]="'true'"
-          poster="../../../assets/Logo-name.png"
-          [id]="'media-' + item.reels_id" class="video-media">
-          <source [src]="'https://www.agnitotoday.com/' + item.source" type="video/mp4">
-        </video>
+      <div *ngIf="volumeAnimation === true && mute">
+        <ion-icon class="novolume likeEffect" name="volume-mute-outline"></ion-icon>
       </div>
     </div>
-  </ion-list>
+    <div class="btnRow">
+      <div class="subsBtn">
+        <ion-text>Subscribe</ion-text>
+      </div>
 
-
-</div>
+      <div class="share-btn" (click)="share($event, item.link)">
+        <ion-icon name="share-social-sharp"></ion-icon>
+        <ion-text></ion-text>
+      </div>
+    </div>
+    <div class="overlay"></div>
+    <video style="height: 100%; width: 100%;margin-top: 113px;" inViewport [inViewportOptions]="{ threshold: [0, 0.65] }"
+      (inViewportAction)="onIntersection($event)" playsinline loop [muted]="'true'" [id]="'media-' + item.reels_id"
+      class="video-media" preload="metadata">
+      <source [src]="'https://www.agnitotoday.com/' + item.source+'#t=0.1'" type="video/mp4">
+    </video>
+  </div>
+</ion-slide>
+</ion-slides>

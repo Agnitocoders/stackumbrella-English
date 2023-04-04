@@ -1,9 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>landing</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [scrollEvents]=true (ionScrollStart)="handleScrollStart()" (ionScroll)="handleScroll($any($event))"
+  (ionScrollEnd)="handleScrollEnd()">
+  <app-video-list></app-video-list>
+  <!-- <app-post-slider></app-post-slider> -->
 </ion-content>
